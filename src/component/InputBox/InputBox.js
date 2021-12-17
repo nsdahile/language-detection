@@ -30,15 +30,11 @@ const InputBox = () => {
   };
 
   return (
-    <div className='container'>
-      <div>
-        <h3>Language: {predictedLanguage}</h3>
-      </div>
-
+    <div className="container mt-3">
       <form onSubmit={formSubmitHandler}>
         <div className="mb-3">
           <label htmlFor="text" className="form-label">
-            Email address
+            Enter text for language detection
           </label>
           <textarea
             id="text"
@@ -52,6 +48,9 @@ const InputBox = () => {
           Detect Language
         </button>
       </form>
+      <div className="text-center">
+        <h3>Language: {predictedLanguage}</h3>
+      </div>
     </div>
   );
 };
