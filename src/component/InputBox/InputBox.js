@@ -3,6 +3,7 @@ import { useState } from "react";
 const InputBox = () => {
   const [predictedLanguage, setPredictedLanguage] = useState("");
   const URL = "https://mywebsite.com/endpoint/";
+
   const sendDetectLanguageRequest = (enteredText) => {
     // fetch(URL, {
     //   method: "POST",
@@ -16,7 +17,7 @@ const InputBox = () => {
     // })
     //   .then((res) => {
     //     console.log(res);
-        setPredictedLanguage("EN");
+    setPredictedLanguage("EN");
     //   })
     //   .catch((err) => {
     //     console.log(err);
@@ -29,16 +30,29 @@ const InputBox = () => {
   };
 
   return (
-    <>
+    <div className='container'>
       <div>
-        <h1>Language: {predictedLanguage}</h1>
+        <h3>Language: {predictedLanguage}</h3>
       </div>
+
       <form onSubmit={formSubmitHandler}>
-        <label htmlFor="text">Enter text</label>
-        <textarea id="text" name="text" rows="4" cols="50"></textarea>
-        <button type="submit">Submit</button>
+        <div className="mb-3">
+          <label htmlFor="text" className="form-label">
+            Email address
+          </label>
+          <textarea
+            id="text"
+            className="form-control"
+            name="text"
+            rows="10"
+            cols="50"
+          ></textarea>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Detect Language
+        </button>
       </form>
-    </>
+    </div>
   );
 };
 
