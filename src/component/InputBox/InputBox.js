@@ -1,27 +1,19 @@
+import axios from "axios";
 import { useState } from "react";
 
 const InputBox = () => {
   const [predictedLanguage, setPredictedLanguage] = useState("");
-  const URL = "https://mywebsite.com/endpoint/";
+  const URL = "https://la-identification.herokuapp.com/predict";
 
   const sendDetectLanguageRequest = (enteredText) => {
-    // fetch(URL, {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     text: enteredText,
-    //   }),
-    // })
-    //   .then((res) => {
-    //     console.log(res);
-    setPredictedLanguage("EN");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios
+      .post(URL, {text:enteredText})
+      .then(function (response) {
+        setPredictedLanguage(response.data.message);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const formSubmitHandler = (event) => {
