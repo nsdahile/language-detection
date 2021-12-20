@@ -3,13 +3,16 @@ import { useState } from "react";
 
 const InputBox = () => {
   const [predictedLanguage, setPredictedLanguage] = useState("");
-  const URL = "https://la-identification.herokuapp.com/predict";
+  // const URL = "https://la-identification.herokuapp.com/predict";
+  const URL ="http://127.0.0.1:5000/predict";
 
   const sendDetectLanguageRequest = (enteredText) => {
+    console.log(JSON.stringify({ text: enteredText }));
     axios
-      .post(URL, {text:enteredText})
+      .post(URL, { text: enteredText })
       .then(function (response) {
-        setPredictedLanguage(response.data.message);
+        console.log(response);
+        setPredictedLanguage(response.data["predicted "]);
       })
       .catch(function (error) {
         console.log(error);
